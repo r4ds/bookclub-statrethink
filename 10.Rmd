@@ -1,4 +1,4 @@
-# The Golem of Prague
+# Big Entropy and the Generalized Linear Model
 
 **Learning objectives:**
 
