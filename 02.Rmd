@@ -4,11 +4,86 @@
 
 - THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
 
-## SLIDE 1
+## Practice exercises
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+### Exercises Hard 1 - Hard 3
 
+**Solutions by Kent Johnson**
+
+Suppose there are two equally common species of panda bear. Species A gives birth to twins 10% of the time, otherwise birthing a single infant. Species B births twins 20% of the time, otherwise birthing singleton infants.
+
+#### 2H2: Suppose a female panda of unknown species has just given birth to twins. What is the probability that she is from species A?
+
+The likelihood of birthing twins for each species:
+$$Pr(twins|A) = 0.1$$
+$$Pr(twins|B) = 0.2$$
+
+The prior probability that a panda is species A or B:
+$$Pr(A) = Pr(B) = 0.5$$
+
+The average likelihood of twins is the weighted average of the individual
+likelihoods. This will be the denominator in Bayes theorem:
+$$Pr(twins)
+  = Pr(twins|A) * Pr(A) + Pr(twins|B) * Pr(B) \\
+  = 0.1 * 0.5 + 0.2 * 0.5 \\
+  = 0.15$$
+
+Bayes theorem gives the posterior probability of A or B given the
+birth of twins:
+$$Pr(A|twins) = Pr(twins|A) * Pr(A) / Pr(twins) \\
+  = (0.1 * 0.5) / 0.15 \\
+  = 1/3$$
+
+$$Pr(B|twins) = Pr(twins|B) * Pr(B) / Pr(twins) \\
+  = (0.2 * 0.5) / 0.15 \\
+  = 2/3$$
+
+#### 2H1: What is the probability that her next birth will also be twins?
+
+The posterior probabilities $Pr(A|twins)$ and $Pr(B|twins)$ from **2H2**
+become the prior probabilities for this question. 
+We are asked for the overall probability
+of twins, this is the weighted average of the probabilities for each species.
+
+$$Pr(second twin|twins) \\
+  = Pr(twins|A) * Pr(A|twins) + Pr(twins|B) * Pr(B|twins) \\
+  = 0.1 * (1/3) + 0.2 * (2/3) \\
+  = 0.17$$
+
+These results make sense intuitively--B's are twice as likely to have twins,
+so having twins makes them twice as likely to be a B, and moves the probability
+of twins in the next birth two-thirds of the way from 
+$Pr(twins|A)$ to $Pr(twins|B)$.
+
+#### 2H3: Suppose the same panda mother has a second birth and that it is a singleton infant. Compute the posterior probability that this panda is species A.
+
+Again, the posterior from problem **2H2** becomes the prior
+probability of A or B.
+
+Bayes theorem says
+$$Pr(A|single_twin) = Pr(single|A) * Pr(A|twin) / Pr(single|twin)$$
+
+The denominator is the average likelihood of single birth given a prior twin birth:
+$$Pr(single|twin) = Pr(single|A) * Pr(A|twin) + Pr(single|B) * Pr(B|twin) \\
+  = 0.9 * (1/3) + 0.8 * (2/3) \\
+  = 0.833$$
+
+Substituting:
+$$Pr(A|single_twin) 
+  = (0.9 * (1/3)) / 0.833 
+  = 0.36$$
+
+Check: $Pr(A|single_twin)$ should be smaller than $Pr(A|single)$ because
+the twin birth pushes the probability towards B.
+$$Pr(A|single) = Pr(single|A) * Pr(A) / Pr(single) \\
+  = (0.9 * 0.5) / 0.85 \\
+  = 0.53$$
+
+Notice that observing a twin birth changes the posterior much more than
+observing a single birth. Twin births are rare and have very different
+probabilities, so they affect the posterior strongly. Single births are
+common and have similar probabilities, so they don't affect the posterior
+much.
 ## Meeting Videos
 
 ### Cohort 1
