@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.2 Meeting Videos | Statistical Rethinking Book Club</title>
+  <title>2.1 Practice exercises | Statistical Rethinking Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Statistical Rethinking Book Club." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.2 Meeting Videos | Statistical Rethinking Book Club" />
+  <meta property="og:title" content="2.1 Practice exercises | Statistical Rethinking Book Club" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="r4ds/bookclub-statrethink" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.2 Meeting Videos | Statistical Rethinking Book Club" />
+  <meta name="twitter:title" content="2.1 Practice exercises | Statistical Rethinking Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Statistical Rethinking Book Club." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="slide-1.html"/>
-<link rel="next" href="small-worlds-and-large-worlds.html"/>
+<link rel="prev" href="small-worlds-and-large-worlds.html"/>
+<link rel="next" href="sampling-the-imaginary.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -199,10 +199,78 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="meeting-videos" class="section level2">
-<h2><span class="header-section-number">1.2</span> Meeting Videos</h2>
-<div id="cohort-1" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> Cohort 1</h3>
+<div id="practice-exercises" class="section level2">
+<h2><span class="header-section-number">2.1</span> Practice exercises</h2>
+<div id="exercises-hard-1---hard-3" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Exercises Hard 1 - Hard 3</h3>
+<p><strong>Solutions by Kent Johnson</strong></p>
+<p>Suppose there are two equally common species of panda bear. Species A gives birth to twins 10% of the time, otherwise birthing a single infant. Species B births twins 20% of the time, otherwise birthing singleton infants.</p>
+<div id="h2-suppose-a-female-panda-of-unknown-species-has-just-given-birth-to-twins.-what-is-the-probability-that-she-is-from-species-a" class="section level4">
+<h4><span class="header-section-number">2.1.1.1</span> 2H2: Suppose a female panda of unknown species has just given birth to twins. What is the probability that she is from species A?</h4>
+<p>The likelihood of birthing twins for each species:
+<span class="math display">\[Pr(twins|A) = 0.1\]</span>
+<span class="math display">\[Pr(twins|B) = 0.2\]</span></p>
+<p>The prior probability that a panda is species A or B:
+<span class="math display">\[Pr(A) = Pr(B) = 0.5\]</span></p>
+<p>The average likelihood of twins is the weighted average of the individual
+likelihoods. This will be the denominator in Bayes theorem:
+<span class="math display">\[Pr(twins)
+  = Pr(twins|A) * Pr(A) + Pr(twins|B) * Pr(B) \\
+  = 0.1 * 0.5 + 0.2 * 0.5 \\
+  = 0.15\]</span></p>
+<p>Bayes theorem gives the posterior probability of A or B given the
+birth of twins:
+<span class="math display">\[Pr(A|twins) = Pr(twins|A) * Pr(A) / Pr(twins) \\
+  = (0.1 * 0.5) / 0.15 \\
+  = 1/3\]</span></p>
+<p><span class="math display">\[Pr(B|twins) = Pr(twins|B) * Pr(B) / Pr(twins) \\
+  = (0.2 * 0.5) / 0.15 \\
+  = 2/3\]</span></p>
+</div>
+<div id="h1-what-is-the-probability-that-her-next-birth-will-also-be-twins" class="section level4">
+<h4><span class="header-section-number">2.1.1.2</span> 2H1: What is the probability that her next birth will also be twins?</h4>
+<p>The posterior probabilities <span class="math inline">\(Pr(A|twins)\)</span> and <span class="math inline">\(Pr(B|twins)\)</span> from <strong>2H2</strong>
+become the prior probabilities for this question.
+We are asked for the overall probability
+of twins, this is the weighted average of the probabilities for each species.</p>
+<p><span class="math display">\[Pr(second twin|twins) \\
+  = Pr(twins|A) * Pr(A|twins) + Pr(twins|B) * Pr(B|twins) \\
+  = 0.1 * (1/3) + 0.2 * (2/3) \\
+  = 0.17\]</span></p>
+<p>These results make sense intuitively–B’s are twice as likely to have twins,
+so having twins makes them twice as likely to be a B, and moves the probability
+of twins in the next birth two-thirds of the way from
+<span class="math inline">\(Pr(twins|A)\)</span> to <span class="math inline">\(Pr(twins|B)\)</span>.</p>
+</div>
+<div id="h3-suppose-the-same-panda-mother-has-a-second-birth-and-that-it-is-a-singleton-infant.-compute-the-posterior-probability-that-this-panda-is-species-a." class="section level4">
+<h4><span class="header-section-number">2.1.1.3</span> 2H3: Suppose the same panda mother has a second birth and that it is a singleton infant. Compute the posterior probability that this panda is species A.</h4>
+<p>Again, the posterior from problem <strong>2H2</strong> becomes the prior
+probability of A or B.</p>
+<p>Bayes theorem says
+<span class="math display">\[Pr(A|single_twin) = Pr(single|A) * Pr(A|twin) / Pr(single|twin)\]</span></p>
+<p>The denominator is the average likelihood of single birth given a prior twin birth:
+<span class="math display">\[Pr(single|twin) = Pr(single|A) * Pr(A|twin) + Pr(single|B) * Pr(B|twin) \\
+  = 0.9 * (1/3) + 0.8 * (2/3) \\
+  = 0.833\]</span></p>
+<p>Substituting:
+<span class="math display">\[Pr(A|single_twin) 
+  = (0.9 * (1/3)) / 0.833 
+  = 0.36\]</span></p>
+<p>Check: <span class="math inline">\(Pr(A|single_twin)\)</span> should be smaller than <span class="math inline">\(Pr(A|single)\)</span> because
+the twin birth pushes the probability towards B.
+<span class="math display">\[Pr(A|single) = Pr(single|A) * Pr(A) / Pr(single) \\
+  = (0.9 * 0.5) / 0.85 \\
+  = 0.53\]</span></p>
+<p>Notice that observing a twin birth changes the posterior much more than
+observing a single birth. Twin births are rare and have very different
+probabilities, so they affect the posterior strongly. Single births are
+common and have similar probabilities, so they don’t affect the posterior
+much.
+## Meeting Videos</p>
+</div>
+</div>
+<div id="cohort-1-1" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Cohort 1</h3>
 <iframe src="https://www.youtube.com/embed/URL" width="100%" height="400px" data-external="1">
 </iframe>
 <details>
@@ -218,8 +286,8 @@
           </div>
         </div>
       </div>
-<a href="slide-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="small-worlds-and-large-worlds.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="small-worlds-and-large-worlds.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sampling-the-imaginary.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -250,7 +318,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/r4ds/bookclub-statrethink/edit/main/01.Rmd",
+"link": "https://github.com/r4ds/bookclub-statrethink/edit/main/02.Rmd",
 "text": "Edit"
 },
 "history": {
