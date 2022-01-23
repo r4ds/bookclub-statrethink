@@ -88,12 +88,17 @@ much.
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/2u1I6dVvQhE")`
 
 <details>
 <summary> Meeting chat log </summary>
 
 ```
-LOG
+00:54:23	Tony ElHabr:	we need to draw black and white cards to determine who goes
+00:54:49	ege can taslicukur:	what if i have a card with 2 black faces?
+00:54:56	Tony ElHabr:	we end the meeting
+00:59:10	ege can taslicukur:	😃
+01:05:35	syd235:	I think the author just wanted to play a joke on us to make us use pandas in R
+01:05:59	Justin Dollman:	🥲
 ```
 </details>
