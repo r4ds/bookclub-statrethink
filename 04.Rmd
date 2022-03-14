@@ -13,12 +13,13 @@
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/sW8RpF_MZtE")`
 
 <details>
 <summary> Meeting chat log </summary>
 
 ```
-LOG
+00:06:26	Elliott Deal:	My book actually skips 4H7
+00:17:15	Joe Syd:	Cool app from Hadley to see how often packages were downloaded: https://hadley.shinyapps.io/cran-downloads/
 ```
 </details>

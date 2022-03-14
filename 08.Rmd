@@ -13,12 +13,12 @@
 
 ### Cohort 1
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/LPOrzy_hEeM")`
 
 <details>
 <summary> Meeting chat log </summary>
 
 ```
-LOG
+00:46:59	Mikhael Manurung:	https://www.rdocumentation.org/packages/rethinking/versions/2.13/topics/coerce_index
 ```
 </details>
